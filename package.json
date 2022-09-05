@@ -1,0 +1,26 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "The backend of the service for finding movies and saving them in user's personal account ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
+    "lint": "npx eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vasily257/movies-explorer-api.git"
+  },
+  "author": "Vasiliy Kalmykov <vasily.sergeevich.k@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vasily257/movies-explorer-api/issues"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.19"
+  }
+}

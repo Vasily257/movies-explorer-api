@@ -1,7 +1,7 @@
 const { celebrate, Joi } = require('celebrate');
 const { linkRegex } = require('../utils/constants');
 
-const userNameRules = Joi.string().min(2).max(30);
+const nameRules = Joi.string().required().min(2).max(30);
 const emailRules = Joi.string().required().email();
 const passwordRules = Joi.string().required();
 const linkRules = Joi.string().required().regex(linkRegex);
@@ -11,7 +11,7 @@ const idRules = Joi.string().alphanum().length(24);
 
 module.exports.validateUserData = celebrate({
   body: Joi.object().keys({
-    name: userNameRules,
+    name: nameRules,
     email: emailRules,
     password: passwordRules,
   }),
@@ -19,7 +19,7 @@ module.exports.validateUserData = celebrate({
 
 module.exports.validateUpdatingUserInfo = celebrate({
   body: Joi.object().keys({
-    name: userNameRules,
+    name: nameRules,
     email: emailRules,
   }),
 });

@@ -13,3 +13,5 @@ routes.post('/signin', validateUserData, login);
 routes.use(auth);
 routes.use('/users', userRoutes);
 routes.use('/movies', movieRoutes);
+
+module.exports = { routes };

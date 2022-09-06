@@ -6,7 +6,7 @@ const BadRequestError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 const NotFoundError = require('../errors/not-found-error');
 
-const { jwtSign } = require('../utils/utils');
+const { handlesuccessfulСreation, jwtSign } = require('../utils/utils');
 
 const {
   SALT_ROUNDS,
@@ -23,7 +23,7 @@ module.exports.createUser = async (req, res, next) => {
   const { email, password, name } = req.body;
 
   try {
-    const hash = bcrypt(password, SALT_ROUNDS);
+    const hash = await bcrypt.hash(password, SALT_ROUNDS);
     let user = await User.create({
       email,
       password: hash,
@@ -31,6 +31,8 @@ module.exports.createUser = async (req, res, next) => {
     });
     user = user.toObject();
     delete user.password;
+
+    handlesuccessfulСreation(res, user);
   } catch (err) {
     if (err.code === DUPLICATE_RECORD_CODE) {
       next(new ConflictError(EXISTING_USER_ERROR_TEXT));

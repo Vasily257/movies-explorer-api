@@ -68,4 +68,4 @@ const movieSchema = new Schema({
   },
 });
 
-module.exports = model('movie', movieSchema);
+module.exports.Movie = model('movie', movieSchema);

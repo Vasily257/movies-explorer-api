@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
+const { routes } = require('./src/routes/index');
 
 const { rateOptions, corsOptions } = require('./src/utils/constants');
 
@@ -20,14 +21,17 @@ app.use(cors(corsOptions));
 app.use(helmet());
 app.use(requestLogger);
 
+app.use(express.json());
+app.use(routes);
+
 app.use(errorLogger);
 
-async function startServer() {
+async function main() {
   await mongoose.connect('mongodb://localhost:27017/mestodb');
   await app.listen(PORT);
 }
 
-startServer();
+main();
 
 process.on('uncaughtException', (err, origin) => {
   // eslint-disable-next-line no-console

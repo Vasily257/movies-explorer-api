@@ -6,6 +6,9 @@ const NOT_FOUND_STATUS = 404;
 const CONFLICT_STATUS = 409;
 const INTERNAL_SERVER_ERROR_STATUS = 500;
 
+const AUTHORIZATION_WARNING_TEXT = 'Вам нужно авторизоваться.';
+const AUTHORIZATION_FAILED_TEXT = 'Пользователь с такой почтой или паролем не найден.';
+
 const UPDATING_USER_PROFILE_ERROR_TEXT = 'Переданы некорректные данные при обновлении профиля пользователя.';
 const INCORRECT_USER_ID_ERROR_TEXT = 'Неправильно указан _id пользователя.';
 const MISSING_USER_ID_ERROR_TEXT = 'По указанному _id пользователь не найден.';
@@ -35,6 +38,9 @@ module.exports = {
   NOT_FOUND_STATUS,
   CONFLICT_STATUS,
   INTERNAL_SERVER_ERROR_STATUS,
+
+  AUTHORIZATION_WARNING_TEXT,
+  AUTHORIZATION_FAILED_TEXT,
 
   UPDATING_USER_PROFILE_ERROR_TEXT,
   INCORRECT_USER_ID_ERROR_TEXT,

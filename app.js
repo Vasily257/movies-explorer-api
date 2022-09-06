@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const helmet = require('helmet');
+const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 const { routes } = require('./src/routes/index');
 
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(routes);
 
 app.use(errorLogger);
+app.use(errors());
 
 async function main() {
   await mongoose.connect('mongodb://localhost:27017/mestodb');

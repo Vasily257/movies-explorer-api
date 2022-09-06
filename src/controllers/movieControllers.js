@@ -7,7 +7,7 @@ const ForbiddenError = require('../errors/forbidden-error');
 const {
   CREATING_MOVIE_ERROR_TEXT,
   MISSING_MOVIE_ID_ERROR_TEXT,
-  DELETING_CARD_ERROR_TEXT,
+  DELETING_MOVIE_ERROR_TEXT,
   INCORRECT_MOVIE_ID_ERROR_TEXT,
 } = require('../utils/constants');
 const { handlesuccessfulСreation } = require('../utils/utils');
@@ -74,7 +74,7 @@ module.exports.deleteMovie = async (req, res, next) => {
     });
 
     if (movie.owner.toString() !== currentUser) {
-      throw new ForbiddenError(DELETING_CARD_ERROR_TEXT);
+      throw new ForbiddenError(DELETING_MOVIE_ERROR_TEXT);
     } else {
       await movie.delete();
     }

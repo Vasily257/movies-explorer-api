@@ -21,7 +21,7 @@ const MISSING_USER_ID_ERROR_TEXT = 'По указанному _id пользов
 const CREATING_MOVIE_ERROR_TEXT = 'Переданы некорректные данные при создании фильма.';
 const INCORRECT_MOVIE_ID_ERROR_TEXT = 'Неправильно указан _id фильма.';
 const MISSING_MOVIE_ID_ERROR_TEXT = 'По указанному _id фильм не найден.';
-const DELETING_CARD_ERROR_TEXT = 'Нельзя удалить фильм другого пользователя.';
+const DELETING_MOVIE_ERROR_TEXT = 'Нельзя удалить фильм другого пользователя.';
 
 const limiterOptions = {
   windowMs: 15 * 60 * 1000,
@@ -58,7 +58,7 @@ module.exports = {
 
   CREATING_MOVIE_ERROR_TEXT,
   MISSING_MOVIE_ID_ERROR_TEXT,
-  DELETING_CARD_ERROR_TEXT,
+  DELETING_MOVIE_ERROR_TEXT,
   INCORRECT_MOVIE_ID_ERROR_TEXT,
 
   limiterOptions,

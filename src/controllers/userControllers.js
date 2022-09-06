@@ -84,14 +84,14 @@ module.exports.getCurrentUser = async (req, res, next) => {
 
 module.exports.updateUserProfile = async (req, res, next) => {
   const { _id } = req.user;
-  const { name, about } = req.body;
+  const { name, email } = req.body;
 
   try {
     const user = await User.findByIdAndUpdate(
       _id,
       {
         name,
-        about,
+        email,
       },
       {
         new: true,

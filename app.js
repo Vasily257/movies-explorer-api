@@ -11,10 +11,11 @@ const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 const { rateOptions, corsOptions } = require('./src/utils/constants');
 const centralizedErrorHandling = require('./src/middlewares/centralized-error-handling');
-
 const { routes } = require('./src/routes/index');
 
-const { PORT = 3000 } = process.env;
+const { PORT_DEV, MONGO_DB_DEV } = require('./src/utils/config');
+
+const { PORT = PORT_DEV, MONGO_DB = MONGO_DB_DEV } = process.env;
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.use(errors());
 app.use(centralizedErrorHandling);
 
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/mestodb');
+  await mongoose.connect(MONGO_DB);
   await app.listen(PORT);
 }
 

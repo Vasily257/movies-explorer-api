@@ -61,6 +61,7 @@ module.exports.login = async (req, res, next) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       next(new UnauthorizedError(AUTHORIZATION_FAILED_TEXT));
+      return;
     }
 
     const token = jwtSign(user);

@@ -8,7 +8,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const { rateOptions, corsOptions } = require('./src/utils/utils');
+const { rateOptions, corsOptions } = require('./src/utils/constants');
 
 const { PORT = 3000 } = process.env;
 

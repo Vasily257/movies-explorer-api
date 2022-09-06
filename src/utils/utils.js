@@ -1,16 +1,6 @@
-const limiterOptions = {
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-};
+const { CREATED_STATUS } = require('./constants');
 
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-};
-
-module.exports = {
-  limiterOptions,
-  corsOptions,
+module.exports.handlesuccessfulСreation = (res, createdObject) => {
+  res.status(CREATED_STATUS);
+  res.send(createdObject);
 };

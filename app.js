@@ -13,9 +13,9 @@ const { rateOptions, corsOptions } = require('./src/utils/constants');
 const centralizedErrorHandling = require('./src/middlewares/centralized-error-handling');
 const { routes } = require('./src/routes/index');
 
-const { PORT_DEV, MONGO_DB_DEV } = require('./src/utils/config');
+const { PORT_DEV, MONGO_URL_DEV } = require('./src/utils/config');
 
-const { PORT = PORT_DEV, MONGO_DB = MONGO_DB_DEV } = process.env;
+const { PORT = PORT_DEV, MONGO_URL = MONGO_URL_DEV } = process.env;
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.use(errors());
 app.use(centralizedErrorHandling);
 
 async function main() {
-  await mongoose.connect(MONGO_DB);
+  await mongoose.connect(MONGO_URL);
   await app.listen(PORT);
 }
 

@@ -38,7 +38,7 @@ module.exports.createMovie = async (req, res, next) => {
   } = req.body;
 
   try {
-    const movie = Movie.create({
+    const movie = await Movie.create({
       country,
       director,
       duration,

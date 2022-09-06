@@ -23,6 +23,8 @@ const INCORRECT_MOVIE_ID_ERROR_TEXT = 'Неправильно указан _id �
 const MISSING_MOVIE_ID_ERROR_TEXT = 'По указанному _id фильм не найден.';
 const DELETING_MOVIE_ERROR_TEXT = 'Нельзя удалить фильм другого пользователя.';
 
+const SERVER_ERROR_TEXT = 'Внутренняя ошибка сервера.';
+
 const limiterOptions = {
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -60,6 +62,8 @@ module.exports = {
   MISSING_MOVIE_ID_ERROR_TEXT,
   DELETING_MOVIE_ERROR_TEXT,
   INCORRECT_MOVIE_ID_ERROR_TEXT,
+
+  SERVER_ERROR_TEXT,
 
   limiterOptions,
   corsOptions,

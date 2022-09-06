@@ -9,9 +9,10 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
-const { routes } = require('./src/routes/index');
-
 const { rateOptions, corsOptions } = require('./src/utils/constants');
+const centralizedErrorHandling = require('./src/middlewares/centralized-error-handling');
+
+const { routes } = require('./src/routes/index');
 
 const { PORT = 3000 } = process.env;
 
@@ -27,6 +28,7 @@ app.use(routes);
 
 app.use(errorLogger);
 app.use(errors());
+app.use(centralizedErrorHandling);
 
 async function main() {
   await mongoose.connect('mongodb://localhost:27017/mestodb');

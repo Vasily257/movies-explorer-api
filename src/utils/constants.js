@@ -37,6 +37,8 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
+const linkRegex = /https?:\/\/(www\.)?([a-z0-9\-.])+(\.\w*)(\/*([\w\-._~:?#[\]@!$&'()*+,;=]))*/i;
+
 module.exports = {
   CREATED_STATUS,
   UNAUTHORIZED_STATUS,
@@ -67,4 +69,6 @@ module.exports = {
 
   limiterOptions,
   corsOptions,
+
+  linkRegex,
 };

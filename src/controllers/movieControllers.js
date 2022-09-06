@@ -78,6 +78,8 @@ module.exports.deleteMovie = async (req, res, next) => {
     } else {
       await movie.delete();
     }
+
+    res.send(movie);
   } catch (err) {
     if (err.name === 'CastError') {
       next(new BadRequestError(INCORRECT_MOVIE_ID_ERROR_TEXT));

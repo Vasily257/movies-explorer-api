@@ -6,6 +6,8 @@ const { userRoutes } = require('./userRoutes');
 const { movieRoutes } = require('./movieRoutes');
 const { validateUserData } = require('../middlewares/validate-requests');
 
+const NotFoundError = require('../errors/not-found-error');
+
 const routes = express.Router();
 
 routes.post('/signup', validateUserData, createUser);
@@ -13,5 +15,8 @@ routes.post('/signin', validateUserData, login);
 routes.use(auth);
 routes.use('/users', userRoutes);
 routes.use('/movies', movieRoutes);
+routes.use((req, res, next) => {
+  next(new NotFoundError('Запрашиваемая страница не найдена.'));
+});
 
 module.exports = { routes };

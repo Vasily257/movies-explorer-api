@@ -6,9 +6,14 @@ const NOT_FOUND_STATUS = 404;
 const CONFLICT_STATUS = 409;
 const INTERNAL_SERVER_ERROR_STATUS = 500;
 
+const SALT_ROUNDS = 10;
+const DUPLICATE_RECORD_CODE = 11000;
+
 const AUTHORIZATION_WARNING_TEXT = 'Вам нужно авторизоваться.';
 const AUTHORIZATION_FAILED_TEXT = 'Пользователь с такой почтой или паролем не найден.';
 
+const EXISTING_USER_ERROR_TEXT = 'Такой пользователь уже существует.';
+const CREATING_USER_ERROR_TEXT = 'Переданы некорректные данные при создании пользователя.';
 const UPDATING_USER_PROFILE_ERROR_TEXT = 'Переданы некорректные данные при обновлении профиля пользователя.';
 const INCORRECT_USER_ID_ERROR_TEXT = 'Неправильно указан _id пользователя.';
 const MISSING_USER_ID_ERROR_TEXT = 'По указанному _id пользователь не найден.';
@@ -39,9 +44,14 @@ module.exports = {
   CONFLICT_STATUS,
   INTERNAL_SERVER_ERROR_STATUS,
 
+  SALT_ROUNDS,
+  DUPLICATE_RECORD_CODE,
+
   AUTHORIZATION_WARNING_TEXT,
   AUTHORIZATION_FAILED_TEXT,
 
+  EXISTING_USER_ERROR_TEXT,
+  CREATING_USER_ERROR_TEXT,
   UPDATING_USER_PROFILE_ERROR_TEXT,
   INCORRECT_USER_ID_ERROR_TEXT,
   MISSING_USER_ID_ERROR_TEXT,

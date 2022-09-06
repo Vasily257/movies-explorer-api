@@ -1,4 +1,4 @@
-const { Movie } = require('../models/userModel');
+const { Movie } = require('../models/movieModel');
 
 const BadRequestError = require('../errors/bad-request-error');
 const NotFoundError = require('../errors/not-found-error');
@@ -30,7 +30,7 @@ module.exports.createMovie = async (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
@@ -45,7 +45,7 @@ module.exports.createMovie = async (req, res, next) => {
       year,
       description,
       image,
-      trailer,
+      trailerLink,
       nameRU,
       nameEN,
       thumbnail,

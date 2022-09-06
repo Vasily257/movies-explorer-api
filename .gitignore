@@ -10,3 +10,6 @@ node_modules/
 
 # prettier configure file
 .prettierrc
+
+# request file of Rest client
+requests.http

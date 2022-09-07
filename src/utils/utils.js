@@ -13,4 +13,4 @@ module.exports.jwtSign = (user) => jwt.sign({ _id: user._id }, NODE_ENV === 'pro
   expiresIn: '7d',
 });
 
-module.exports.jwtVerify = (token) => jwt.verify(token, JWT_SECRET);
+module.exports.jwtVerify = (token) => jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : JWT_SECRET_DEV);

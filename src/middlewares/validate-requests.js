@@ -9,9 +9,16 @@ const requiredStringRules = Joi.string().required();
 const requiredNumberRules = Joi.number().required();
 const idRules = Joi.string().alphanum().length(24);
 
-module.exports.validateUserData = celebrate({
+module.exports.validateCreatingUser = celebrate({
   body: Joi.object().keys({
     name: nameRules,
+    email: emailRules,
+    password: passwordRules,
+  }),
+});
+
+module.exports.validateLogining = celebrate({
+  body: Joi.object().keys({
     email: emailRules,
     password: passwordRules,
   }),

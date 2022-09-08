@@ -12,11 +12,12 @@ const {
   SALT_ROUNDS,
   DUPLICATE_RECORD_CODE,
   AUTHORIZATION_FAILED_TEXT,
-  EXISTING_USER_ERROR_TEXT,
   CREATING_USER_ERROR_TEXT,
   UPDATING_USER_PROFILE_ERROR_TEXT,
   INCORRECT_USER_ID_ERROR_TEXT,
   MISSING_USER_ID_ERROR_TEXT,
+  EXISTING_USER_ERROR_TEXT,
+  USING_MAIL_ERROR_TEXT,
 } = require('../utils/constants');
 
 module.exports.createUser = async (req, res, next) => {
@@ -90,6 +91,12 @@ module.exports.updateUserProfile = async (req, res, next) => {
   const { name, email } = req.body;
 
   try {
+    const isMailAlreadyUse = await User.findOne({ email });
+    if (isMailAlreadyUse) {
+      next(new ConflictError(USING_MAIL_ERROR_TEXT));
+      return;
+    }
+
     const user = await User.findByIdAndUpdate(
       _id,
       {

@@ -10,8 +10,8 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 const { rateOptions, corsOptions } = require('./src/utils/constants');
-const centralizedErrorHandling = require('./src/middlewares/centralized-error-handling');
 const { routes } = require('./src/routes/index');
+const centralizedErrorHandling = require('./src/middlewares/centralized-error-handling');
 
 const { PORT_DEV, MONGO_URL_DEV } = require('./src/utils/config');
 
@@ -19,10 +19,10 @@ const { PORT = PORT_DEV, MONGO_URL = MONGO_URL_DEV } = process.env;
 
 const app = express();
 
+app.use(requestLogger);
 app.use(rateLimit(rateOptions));
 app.use(cors(corsOptions));
 app.use(helmet());
-app.use(requestLogger);
 
 app.use(express.json());
 app.use(routes);

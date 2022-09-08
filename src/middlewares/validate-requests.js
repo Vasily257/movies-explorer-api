@@ -42,7 +42,7 @@ module.exports.validateMovieData = celebrate({
     trailerLink: linkRules,
     thumbnail: linkRules,
     owner: idRules,
-    movieId: idRules,
+    movieId: requiredNumberRules,
     nameRU: requiredStringRules,
     nameEN: requiredStringRules,
   }),

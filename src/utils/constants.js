@@ -14,7 +14,6 @@ const AUTHORIZATION_FAILED_TEXT = 'Пользователь с такой поч
 
 const CREATING_USER_ERROR_TEXT = 'Переданы некорректные данные при создании пользователя.';
 const UPDATING_USER_PROFILE_ERROR_TEXT = 'Переданы некорректные данные при обновлении профиля пользователя.';
-const INCORRECT_USER_ID_ERROR_TEXT = 'Неправильно указан _id пользователя.';
 const MISSING_USER_ID_ERROR_TEXT = 'По указанному _id пользователь не найден.';
 const EXISTING_USER_ERROR_TEXT = 'Такой пользователь уже существует.';
 const USING_MAIL_ERROR_TEXT = 'Такая электронная почта уже используется.';
@@ -57,7 +56,6 @@ module.exports = {
 
   CREATING_USER_ERROR_TEXT,
   UPDATING_USER_PROFILE_ERROR_TEXT,
-  INCORRECT_USER_ID_ERROR_TEXT,
   MISSING_USER_ID_ERROR_TEXT,
   EXISTING_USER_ERROR_TEXT,
   USING_MAIL_ERROR_TEXT,

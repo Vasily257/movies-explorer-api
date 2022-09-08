@@ -14,7 +14,6 @@ const {
   AUTHORIZATION_FAILED_TEXT,
   CREATING_USER_ERROR_TEXT,
   UPDATING_USER_PROFILE_ERROR_TEXT,
-  INCORRECT_USER_ID_ERROR_TEXT,
   MISSING_USER_ID_ERROR_TEXT,
   EXISTING_USER_ERROR_TEXT,
   USING_MAIL_ERROR_TEXT,
@@ -116,11 +115,6 @@ module.exports.updateUserProfile = async (req, res, next) => {
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(new BadRequestError(UPDATING_USER_PROFILE_ERROR_TEXT));
-      return;
-    }
-
-    if (err.name === 'CastError') {
-      next(new BadRequestError(INCORRECT_USER_ID_ERROR_TEXT));
       return;
     }
 

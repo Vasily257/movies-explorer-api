@@ -14,7 +14,8 @@ const { handlesuccessfulСreation } = require('../utils/utils');
 
 module.exports.getMovies = async (req, res, next) => {
   try {
-    const movies = await Movie.find({}).sort({ nameRU: -1 });
+    const owner = req.user._id;
+    const movies = await Movie.find({ owner }).sort({ nameRU: -1 });
     res.send(movies);
   } catch (err) {
     next(err);

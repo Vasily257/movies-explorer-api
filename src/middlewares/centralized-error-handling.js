@@ -1,10 +1,10 @@
-const { INTERNAL_SERVER_ERROR_STATUS, SERVER_ERROR_TEXT } = require('../utils/constants');
+const { STATUS, SERVER_ERROR_TEXT } = require('../utils/constants');
 
 module.exports = (err, req, res, next) => {
-  const { statusCode = INTERNAL_SERVER_ERROR_STATUS, message } = err;
+  const { statusCode = STATUS.INTERNAL_SERVER_ERROR, message } = err;
 
   res.status(statusCode).send({
-    message: statusCode === INTERNAL_SERVER_ERROR_STATUS ? SERVER_ERROR_TEXT : message,
+    message: statusCode === STATUS.INTERNAL_SERVER_ERROR ? SERVER_ERROR_TEXT : message,
   });
 
   next();

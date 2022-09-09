@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
-const { CREATED_STATUS } = require('./constants');
+const { STATUS } = require('./constants');
 
 const { JWT_SECRET, NODE_ENV } = process.env;
 const { JWT_SECRET_DEV } = require('./config');
 
 module.exports.handlesuccessfulСreation = (res, createdObject) => {
-  res.status(CREATED_STATUS);
+  res.status(STATUS.CREATED);
   res.send(createdObject);
 };
 

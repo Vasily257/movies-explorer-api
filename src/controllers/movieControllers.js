@@ -4,12 +4,7 @@ const BadRequestError = require('../errors/bad-request-error');
 const NotFoundError = require('../errors/not-found-error');
 const ForbiddenError = require('../errors/forbidden-error');
 
-const {
-  CREATING_MOVIE_ERROR_TEXT,
-  MISSING_MOVIE_ID_ERROR_TEXT,
-  DELETING_MOVIE_ERROR_TEXT,
-  INCORRECT_MOVIE_ID_ERROR_TEXT,
-} = require('../utils/constants');
+const { MOVIE_ERROR_TEXT } = require('../utils/constants');
 const { handlesuccessfulСreation } = require('../utils/utils');
 
 module.exports.getMovies = async (req, res, next) => {
@@ -57,7 +52,7 @@ module.exports.createMovie = async (req, res, next) => {
     handlesuccessfulСreation(res, movie);
   } catch (err) {
     if (err.name === 'ValidationError') {
-      next(new BadRequestError(CREATING_MOVIE_ERROR_TEXT));
+      next(new BadRequestError(MOVIE_ERROR_TEXT.CREATING));
       return;
     }
 
@@ -71,11 +66,11 @@ module.exports.deleteMovie = async (req, res, next) => {
 
   try {
     const movie = await Movie.findById(movieId).orFail(() => {
-      throw new NotFoundError(MISSING_MOVIE_ID_ERROR_TEXT);
+      throw new NotFoundError(MOVIE_ERROR_TEXT.MISSING_ID);
     });
 
     if (movie.owner.toString() !== currentUser) {
-      throw new ForbiddenError(DELETING_MOVIE_ERROR_TEXT);
+      throw new ForbiddenError(MOVIE_ERROR_TEXT.DELETING);
     } else {
       await movie.delete();
     }
@@ -83,7 +78,7 @@ module.exports.deleteMovie = async (req, res, next) => {
     res.send(movie);
   } catch (err) {
     if (err.name === 'CastError') {
-      next(new BadRequestError(INCORRECT_MOVIE_ID_ERROR_TEXT));
+      next(new BadRequestError(MOVIE_ERROR_TEXT.INCORRECT_ID));
       return;
     }
 

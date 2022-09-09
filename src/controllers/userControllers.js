@@ -9,14 +9,10 @@ const NotFoundError = require('../errors/not-found-error');
 const { handlesuccessfulСreation, jwtSign } = require('../utils/utils');
 
 const {
+  AUTHORIZATION_ERROR_TEXT,
+  USER_ERROR_TEXT,
   SALT_ROUNDS,
   DUPLICATE_RECORD_CODE,
-  AUTHORIZATION_FAILED_TEXT,
-  CREATING_USER_ERROR_TEXT,
-  UPDATING_USER_PROFILE_ERROR_TEXT,
-  MISSING_USER_ID_ERROR_TEXT,
-  EXISTING_USER_ERROR_TEXT,
-  USING_MAIL_ERROR_TEXT,
 } = require('../utils/constants');
 
 module.exports.createUser = async (req, res, next) => {
@@ -35,12 +31,12 @@ module.exports.createUser = async (req, res, next) => {
     handlesuccessfulСreation(res, user);
   } catch (err) {
     if (err.code === DUPLICATE_RECORD_CODE) {
-      next(new ConflictError(EXISTING_USER_ERROR_TEXT));
+      next(new ConflictError(USER_ERROR_TEXT.ALREADY_EXISTING));
       return;
     }
 
     if (err.name === 'ValidationError') {
-      next(new BadRequestError(CREATING_USER_ERROR_TEXT));
+      next(new BadRequestError(USER_ERROR_TEXT.CREATING));
       return;
     }
 
@@ -54,13 +50,13 @@ module.exports.login = async (req, res, next) => {
   try {
     const user = await User.findOne({ email })
       .orFail(() => {
-        next(new UnauthorizedError(AUTHORIZATION_FAILED_TEXT));
+        next(new UnauthorizedError(AUTHORIZATION_ERROR_TEXT.FAILED));
       })
       .select('+password');
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      next(new UnauthorizedError(AUTHORIZATION_FAILED_TEXT));
+      next(new UnauthorizedError(AUTHORIZATION_ERROR_TEXT.FAILED));
       return;
     }
 
@@ -76,7 +72,7 @@ module.exports.getCurrentUser = async (req, res, next) => {
 
   try {
     const user = await User.findById(_id).orFail(() => {
-      throw new NotFoundError(MISSING_USER_ID_ERROR_TEXT);
+      throw new NotFoundError(USER_ERROR_TEXT.MISSING_ID);
     });
 
     res.send(user);
@@ -92,7 +88,7 @@ module.exports.updateUserProfile = async (req, res, next) => {
   try {
     const isMailAlreadyUse = await User.findOne({ email });
     if (isMailAlreadyUse) {
-      next(new ConflictError(USING_MAIL_ERROR_TEXT));
+      next(new ConflictError(USER_ERROR_TEXT.ALREADY_USING_MAIL));
       return;
     }
 
@@ -108,13 +104,13 @@ module.exports.updateUserProfile = async (req, res, next) => {
         upsert: false,
       },
     ).orFail(() => {
-      throw new NotFoundError(MISSING_USER_ID_ERROR_TEXT);
+      throw new NotFoundError(USER_ERROR_TEXT.MISSING_ID);
     });
 
     res.send(user);
   } catch (err) {
     if (err.name === 'ValidationError') {
-      next(new BadRequestError(UPDATING_USER_PROFILE_ERROR_TEXT));
+      next(new BadRequestError(USER_ERROR_TEXT.UPDATING_PROFILE));
       return;
     }
 

@@ -83,11 +83,11 @@ module.exports.getCurrentUser = async (req, res, next) => {
 
 module.exports.updateUserProfile = async (req, res, next) => {
   const { _id } = req.user;
-  const { name, email } = req.body;
+  const { name, email, currentEmail } = req.body;
 
   try {
-    const isMailAlreadyUse = await User.findOne({ email });
-    if (isMailAlreadyUse) {
+    const existingUser = await User.findOne({ email });
+    if (existingUser && currentEmail !== existingUser.email) {
       next(new ConflictError(USER_ERROR_TEXT.ALREADY_USING_MAIL));
       return;
     }

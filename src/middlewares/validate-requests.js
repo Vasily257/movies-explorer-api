@@ -28,6 +28,7 @@ module.exports.validateUpdatingUserInfo = celebrate({
   body: Joi.object().keys({
     name: nameRules,
     email: emailRules,
+    currentEmail: emailRules,
   }),
 });
 

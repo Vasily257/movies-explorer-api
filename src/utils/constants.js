@@ -36,13 +36,14 @@ const DUPLICATE_RECORD_CODE = 11000;
 const limiterOptions = {
   windowMs: 15 * 60 * 1000,
   max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
 };
 
 const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
-  credentials: true,
   optionsSuccessStatus: 200,
 };
 

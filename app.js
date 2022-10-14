@@ -22,7 +22,7 @@ const app = express();
 app.use(requestLogger);
 app.use(rateLimit(rateOptions));
 app.use(cors(corsOptions));
-app.use(helmet());
+app.use(helmet.hidePoweredBy());
 
 app.use(express.json());
 app.use(routes);

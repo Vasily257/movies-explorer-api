@@ -35,9 +35,7 @@ const DUPLICATE_RECORD_CODE = 11000;
 
 const limiterOptions = {
   windowMs: 15 * 60 * 1000,
-  max: 10000,
-  standardHeaders: true,
-  legacyHeaders: false,
+  max: 100,
 };
 
 const corsOptions = {

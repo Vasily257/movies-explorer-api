@@ -34,7 +34,7 @@ const SALT_ROUNDS = 10;
 const DUPLICATE_RECORD_CODE = 11000;
 
 const limiterOptions = {
-  windowMs: 15 * 60 * 1000,
+  windowMs: 3 * 60 * 1000,
   max: 500,
 };
 

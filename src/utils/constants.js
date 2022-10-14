@@ -34,15 +34,16 @@ const SALT_ROUNDS = 10;
 const DUPLICATE_RECORD_CODE = 11000;
 
 const limiterOptions = {
-  windowMs: 3 * 60 * 1000,
-  max: 500,
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 };
 
 const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
-  optionsSuccessStatus: 204,
+  credentials: true,
+  optionsSuccessStatus: 200,
 };
 
 const linkRegex = /https?:\/\/(www\.)?([a-z0-9\-.])+(\.\w*)(\/*([\w\-._~:?#[\]@!$&'()*+,;=]))*/i;

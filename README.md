@@ -9,7 +9,7 @@ It has the server on the Express.js which processes and validates API-requests. 
   
 ## Links  
 A website link: http://kalmykov.moviesexplorer.nomoredomains.sbs/  
-A server link: https://api.kalmykov.mesto.nomoredomains.sbs/  
+A server link: https://api.kalmykov.moviesexplorer.nomoredomains.sbs/  
 A frontend part: https://github.com/Vasily257/movies-explorer-frontend  
    
 ## Usage  

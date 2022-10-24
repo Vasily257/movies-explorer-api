@@ -20,7 +20,7 @@ To clone a project, you need to open desired directory and use the command:
 **HTTPS**: `git clone https://github.com/Vasily257/movies-explorer-api.git`  
 **SSH**: `git clone git@github.com:Vasily257/movies-explorer-api.git`  
 
-To start a project, you need to open the `src` folder in the terminal and use the command `npm run start`.
+To start a project, you need to open the project folder in the terminal and use the command `npm run start`.
   
 ## Status
 The project is closed, there are no plans for completion.

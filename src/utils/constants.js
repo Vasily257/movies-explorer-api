@@ -30,6 +30,8 @@ const MOVIE_ERROR_TEXT = {
 
 const SERVER_ERROR_TEXT = 'Внутренняя ошибка сервера.';
 
+const BASE_ALIAS = 'movies-explorer/api';
+
 const SALT_ROUNDS = 10;
 const DUPLICATE_RECORD_CODE = 11000;
 
@@ -53,6 +55,8 @@ module.exports = {
   USER_ERROR_TEXT,
   MOVIE_ERROR_TEXT,
   SERVER_ERROR_TEXT,
+
+  BASE_ALIAS,
 
   SALT_ROUNDS,
   DUPLICATE_RECORD_CODE,

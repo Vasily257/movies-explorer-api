@@ -8,8 +8,8 @@ It has the server on the Express.js which processes and validates API-requests. 
 `JS`, `Express.js`, `MongoDB`, `Git`  
   
 ## Links  
-A website link: http://kalmykov.moviesexplorer.nomoredomains.sbs/  
-A server link: https://api.kalmykov.moviesexplorer.nomoredomains.sbs/  
+A website link: http://v1364358.hosted-by-vdsina.ru/movies-explorer/  
+A server link: http://v1364358.hosted-by-vdsina.ru/movies-explorer/api  
 A frontend part: https://github.com/Vasily257/movies-explorer-frontend  
    
 ## Usage  

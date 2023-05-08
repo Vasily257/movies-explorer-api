@@ -7,7 +7,7 @@
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
     "lint": "npx eslint . --fix",
-    "deploy-env": "scp -r ./.env vasily257@158.160.10.193:/home/vasily257/movies-explorer-api"
+    "deploy-env": "scp -r ./.env root@92.38.241.48:/home/movies-explorer-api"
   },
   "repository": {
     "type": "git",
